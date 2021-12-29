@@ -1,13 +1,12 @@
 package main
 
 import (
+	"github.com/gin-gonic/gin"
+	"log"
 	"math"
 	"net/http"
+	"ngnnath/appli"
 	"strconv"
-
-	"log"
-
-	"github.com/gin-gonic/gin"
 )
 
 type request struct {
@@ -16,7 +15,7 @@ type request struct {
 	Int2  int64  `json:"int2"`
 	Limit int64  `json:"limit"`
 	Str1  string `json:"str1"`
-	Str2  string `json:"str12`
+	Str2  string `json:"str2"`
 }
 
 func callFizzBuzz(c *gin.Context) {
@@ -57,6 +56,7 @@ func callFizzBuzz(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
-	router.GET("/fizzbuzz/:int1/:int2/:limit/:str1/:str2", callFizzBuzz)
+	router.GET("/fizzbuzz/:int1/:int2/:limit/:str1/:str2", appli.CallFizzBuzz)
+	appli.Test()
 	router.Run("localhost:8080")
 }
